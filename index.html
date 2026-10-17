@@ -199,7 +199,6 @@ body {
   color: var(--white);
   letter-spacing: -0.02em;
   margin-bottom: 0.1em;
-  white-space: nowrap;
 }
 .hero-name .last {
   font-weight: 700;
@@ -389,6 +388,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  counter-reset: prop;
 }
 .profile-item {
   font-size: 14px;
@@ -396,14 +396,42 @@ body {
   color: #0d1b2a;
   line-height: 1.8;
   color:#1a2e45;
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem 4.5rem 1.5rem 2rem;
   border: 1px solid var(--border);
   background: var(--white);
   border-radius: 10px;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  counter-increment: prop;
+}
+/* Barra de acento con el mismo degradado dorado-azul de .sidebar-divider */
+.profile-item::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--gold), var(--electric));
+}
+/* Numeral editorial: rompe la monotonia de cuatro filas identicas */
+.profile-item::before {
+  content: counter(prop, decimal-leading-zero);
+  position: absolute;
+  top: 0.9rem; right: 1.4rem;
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.28;
+  pointer-events: none;
+}
+.profile-item:hover {
+  border-color: var(--border-elec);
+  box-shadow: 0 10px 30px rgba(13,27,42,0.10);
+  transform: translateY(-2px);
 }
 .profile-item:hover {
   border-color: var(--electric);
@@ -1207,7 +1235,7 @@ footer {
   <div class="profile-section">
     <div class="profile-sidebar">
       <div class="sidebar-overline">Years of experience</div>
-      <div class="sidebar-stat">14</div>
+      <div class="sidebar-stat">15</div>
       <div class="sidebar-stat-label">years leading<br>international strategy</div>
       <div class="sidebar-divider"></div>
       <div class="sidebar-overline" style="margin-top:0;">Markets</div>
@@ -1220,7 +1248,7 @@ footer {
     </div>
     <div class="profile-content">
       <p class="profile-headline">
-        <span style="color:var(--gold-bright)">Customer-centered professional</span> with <strong>14 years of experience</strong> leading international expansion, business model transformation and execution of strategic initiatives.
+        <span style="color:var(--gold-bright)">Customer-centered professional</span> with <strong>15 years of experience</strong> leading international expansion, business model transformation and execution of strategic initiatives.
       </p>
       <div class="profile-items">
         <div class="profile-item">
@@ -1255,7 +1283,7 @@ footer {
 
 <!-- ══════ TAB 1 — EXPERTISE ══════ -->
 <div class="panel" id="tab-1">
-  <div class="page-banner" style="display:block;padding:7.5rem 5rem 3rem;">
+  <div class="page-banner" style="display:block;padding:5.75rem 5rem 2.5rem;">
     <h2 class="page-title" style="font-size:clamp(1rem,2vw,1.9rem);max-width:100%;line-height:1.05;white-space:nowrap;"><em>Designing scalable strategies</em> to generate <em>sustained impact</em> — across markets &amp; industries.</h2>
   </div>
 
@@ -1263,23 +1291,23 @@ footer {
   <div class="expertise-3col-wrap">
 
     <!-- STRATEGIC -->
-    <div style="background:var(--white);padding:3rem;border:1px solid var(--border);border-top:3px solid var(--electric);border-radius:12px;margin:1.5rem 0 1.5rem 1.5rem;">
+    <div style="background:var(--white);padding:2rem;border:1px solid var(--border);border-top:3px solid var(--electric);border-radius:12px;margin:1.5rem 0 1.5rem 1.5rem;">
       <div style="font-size:10px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--electric);margin-bottom:0.5rem;">Strategic</div>
-      <div style="font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:2rem;">Strategic Planning</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:1.25rem;">Strategic Planning</div>
       <div style="display:flex;flex-direction:column;gap:1rem;">
-        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
           <div style="width:34px;height:34px;border-radius:8px;background:var(--electric-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
           </div>
           <div><div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:0.25rem;">Strategy Definition &amp; Alignment</div><div style="font-size:12px;font-weight:400;color:#1a2e45;line-height:1.6;">Articulate direction across short, medium, and long-term horizons; ensure organization-wide understanding and execution.</div></div>
         </div>
-        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
           <div style="width:34px;height:34px;border-radius:8px;background:var(--electric-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
           </div>
           <div><div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:0.25rem;">Environmental Monitoring</div><div style="font-size:12px;font-weight:400;color:#1a2e45;line-height:1.6;">Track competitors, trends, and regulatory changes to anticipate risks and seize opportunities.</div></div>
         </div>
-        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
           <div style="width:34px;height:34px;border-radius:8px;background:var(--electric-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
           </div>
@@ -1289,23 +1317,23 @@ footer {
     </div>
 
     <!-- TACTICAL -->
-    <div style="background:var(--white);padding:3rem;border:1px solid var(--border);border-top:3px solid var(--electric);border-radius:12px;margin:1.5rem 0;">
+    <div style="background:var(--white);padding:2rem;border:1px solid var(--border);border-top:3px solid var(--electric);border-radius:12px;margin:1.5rem 0;">
       <div style="font-size:10px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--electric);margin-bottom:0.5rem;">Tactical</div>
-      <div style="font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:2rem;">Program / Project Management</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:1.25rem;">Program / Project Management</div>
       <div style="display:flex;flex-direction:column;gap:1rem;">
-        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
           <div style="width:34px;height:34px;border-radius:8px;background:var(--electric-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
           </div>
           <div><div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:0.25rem;">Initiatives Portfolio Management</div><div style="font-size:12px;font-weight:400;color:#1a2e45;line-height:1.6;">Strategic prioritization, budget administration, identification of infrastructure constraints, and support to project leaders.</div></div>
         </div>
-        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
           <div style="width:34px;height:34px;border-radius:8px;background:var(--electric-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           </div>
           <div><div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:0.25rem;">Governance &amp; Oversight</div><div style="font-size:12px;font-weight:400;color:#1a2e45;line-height:1.6;">Implementation of performance frameworks (Balanced Scorecard, OKRs) with stakeholder communication and risk management.</div></div>
         </div>
-        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
           <div style="width:34px;height:34px;border-radius:8px;background:var(--electric-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
           </div>
@@ -1315,17 +1343,17 @@ footer {
     </div>
 
     <!-- OPERATIONAL -->
-    <div style="background:var(--white);padding:3rem;border:1px solid var(--border);border-top:3px solid var(--electric);border-radius:12px;margin:1.5rem 1.5rem 1.5rem 0;">
+    <div style="background:var(--white);padding:2rem;border:1px solid var(--border);border-top:3px solid var(--electric);border-radius:12px;margin:1.5rem 1.5rem 1.5rem 0;">
       <div style="font-size:10px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--electric);margin-bottom:0.5rem;">Operational</div>
-      <div style="font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:2rem;">Operational Contingency</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:1.25rem;">Operational Contingency</div>
       <div style="display:flex;flex-direction:column;gap:1rem;">
-        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
           <div style="width:34px;height:34px;border-radius:8px;background:var(--electric-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
           <div><div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:0.25rem;">Regulatory Compliance</div><div style="font-size:12px;font-weight:400;color:#1a2e45;line-height:1.6;">Coordinate resolution and fulfillment of audits and other regulatory requirements across jurisdictions.</div></div>
         </div>
-        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--electric)'" onmouseout="this.style.borderColor='var(--border)'">
           <div style="width:34px;height:34px;border-radius:8px;background:var(--electric-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
           </div>
@@ -1337,28 +1365,28 @@ footer {
   </div>
 
   <!-- ROW 2: Cross-Functional — white bg, gold top bar, transversal -->
-  <div style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:3rem 4rem 3.5rem;position:relative;margin:0 1.5rem 1.5rem;">
+  <div style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:2rem 3rem 2.25rem;position:relative;margin:0 1.5rem 1.5rem;">
     <div style="text-align:center;margin-bottom:2rem;">
       <div style="font-size:10px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Cross-Functional</div>
       <div style="font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:700;color:var(--navy);">Products &amp; Services Development</div>
     </div>
     <div class="expertise-3col-inner">
 
-      <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.15rem 1.25rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="width:34px;height:34px;border-radius:8px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
         </div>
         <div><div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:0.25rem;">Product Design &amp; Launch</div><div style="font-size:12px;font-weight:400;color:#1a2e45;line-height:1.6;">Identify market needs and translate them into products, from conceptualization to implementation.</div></div>
       </div>
 
-      <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.15rem 1.25rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="width:34px;height:34px;border-radius:8px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
         </div>
         <div><div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:0.25rem;">Product Lifecycle Management</div><div style="font-size:12px;font-weight:400;color:#1a2e45;line-height:1.6;">Oversee the evolution of products and services, incorporating client feedback, regulatory changes, and market trends.</div></div>
       </div>
 
-      <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.15rem 1.25rem;display:flex;gap:0.9rem;align-items:flex-start;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="width:34px;height:34px;border-radius:8px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
         </div>
@@ -1371,7 +1399,7 @@ footer {
 
 <!-- ══════ TAB 2 — EXPERIENCE ══════ -->
 <div class="panel" id="tab-2">
-  <div class="page-banner" style="display:block;padding:7.5rem 5rem 3rem;">
+  <div class="page-banner" style="display:block;padding:5.75rem 5rem 2.5rem;">
     <h2 class="page-title" style="font-size:clamp(1rem,2vw,1.9rem);max-width:100%;line-height:1.05;white-space:nowrap;"><em>Every role.</em> Every market. <em>One mission:</em> turning strategy into lasting results.</h2>
   </div>
 
@@ -1529,7 +1557,7 @@ footer {
 
 <!-- ══════ TAB 3 — EDUCATION ══════ -->
 <div class="panel" id="tab-3">
-  <div class="page-banner" style="display:block;padding:7.5rem 5rem 3rem;">
+  <div class="page-banner" style="display:block;padding:5.75rem 5rem 2.5rem;">
     <h2 class="page-title" style="font-size:clamp(1rem,2vw,1.9rem);max-width:100%;line-height:1.05;white-space:nowrap;"><em>Continuous learning</em> with an execution-driven mindset.</h2>
   </div>
 
@@ -1549,7 +1577,7 @@ footer {
       </div>
 
       <div class="edu-card edu-card-grid">
-        <div class="edu-card-header" style="align-self:start;"><span class="edu-card-badge">Master's in Finance</span><span class="edu-card-year">2020</span></div>
+        <div class="edu-card-header" style="align-self:start;"><span class="edu-card-badge">Master's</span><span class="edu-card-year">2020</span></div>
         <div class="edu-card-degree" style="align-self:start;">Master's in Finance</div>
         <div class="edu-card-school" style="align-self:start;">Universidad Panamericana</div>
         <div style="display:flex;align-items:center;justify-content:center;padding-top:1.5rem;border-top:1px solid var(--border);">
@@ -1614,7 +1642,7 @@ footer {
 
 <!-- ══════ TAB 4 — SKILLS ══════ -->
 <div class="panel" id="tab-4">
-  <div class="page-banner" style="display:block;padding:7.5rem 5rem 3rem;">
+  <div class="page-banner" style="display:block;padding:5.75rem 5rem 2.5rem;">
     <h2 class="page-title" style="font-size:clamp(1rem,2vw,1.9rem);max-width:100%;line-height:1.05;white-space:nowrap;"><em>Capabilities</em> developed through experience.</h2>
   </div>
 
@@ -1722,7 +1750,9 @@ function toggleTl(btn) {
     const H = 180;
 
     const svg = d3.select('#world-map').append('svg')
-      .attr('width', W).attr('height', H)
+      .attr('viewBox', '0 0 ' + W + ' ' + H)
+      .attr('preserveAspectRatio', 'xMidYMid meet')
+      .attr('width', '100%').attr('height', H)
       .style('background', '#f4f6f9');
 
     const projection = d3.geoNaturalEarth1()
